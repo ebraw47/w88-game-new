@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 16, 14, 12;
+  --background-end-rgb: 16, 14, 12;
+  --color-primary: #100E0C;
+  --color-accent: #FFC933;
+  --color-card: #1C1814;
+  --color-cta: #FF8A45;
+  --color-cta-icon: #FF5C2B;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background:
+    radial-gradient(900px 420px at 12% -8%, rgba(255, 201, 51, 0.12), transparent 55%),
+    radial-gradient(700px 360px at 100% 0%, rgba(255, 138, 69, 0.10), transparent 50%),
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Prevent CLS by ensuring images don't shift layout */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer: contain layout to reduce CLS from reflow */
+footer {
+  contain: layout;
+}
+
+/* Prevent font-related layout shifts */
+* {
+  font-family: inherit;
+}
+
+.download-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.download-btn:hover .download-icon {
+  animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(28, 24, 20, 0.92);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 201, 51, 0.12);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(255, 138, 69, 0.18);
+}
+
+/* Prevent layout shift by ensuring content takes up space */
+.stars-bg {
+  pointer-events: none;
+}
